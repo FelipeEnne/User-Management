@@ -46,7 +46,7 @@ class UserController {
     
      this.tableEl.innerHTML = `
         <tr>
-          <td><img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle img-sm"></td>
+          <td><img src="${dataUser.photo}" alt="User Image" class="img-circle img-sm"></td>
           <td>${dataUser.name}</td>
           <td>${dataUser.email}</td>
           <td>${dataUser.admin}</td>
