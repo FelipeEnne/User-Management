@@ -10,8 +10,32 @@ class UserController {
       this.formEl.addEventListener("submit", event => {
         event.preventDefault();
         let user = this.getValues();
-        this.addLine(user);
+       
+        this.getPhoto(content => {
+          user.photo = content;
+          this.addLine(user);
+        });
+        
       })
+    }
+
+    getPhoto(callback) {
+      let fileReader = new FileReader();
+
+      let elements = [...this.formEl.elements].filter(item => {
+        if (item.name === 'photo') {
+          return item;
+        }
+      })
+
+      let file = elements[0].files[0];
+
+      fileReader.onload = () => {
+        
+        callback(fileReader.result)
+      }
+
+      fileReader.readAsDataURL(file)
     }
 
     getValues() {
